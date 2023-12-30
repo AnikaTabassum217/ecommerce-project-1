@@ -1,0 +1,52 @@
+
+.discounted-price .discounted {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #368436;
+}
+.discounted-price .regular {
+    text-decoration: line-through;
+    padding-left: 0.5rem;
+    font-size: 0.75rem;
+    color: gray;
+    font-weight: 500;
+}
+.regular-price{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #368436;
+}
+
+/* .price{
+    font-weight: bolder;
+    font-size: large;
+    color: rgb(128, 0, 117);
+} */
+.btn{
+    border: 2px solid white;
+    border-radius: 32px;
+    padding: 2px;
+    height: 40px;
+    width: 120px;
+    margin-left: 50px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.8s;
+}
+/* a{
+    color: rgb(228, 22, 22);
+    font-size: 30px;
+    text-transform: capitalize;
+    text-decoration: none;
+} */
+.b1{
+    background: -webkit-linear-gradient(0deg,transparent 50%, #3a27e8 50%);
+    background-size: 400px 80px;
+    background-color: #aaa3e6;
+    border: 2px solid #000000;
+}
+.b1:hover{
+    background-position: 200px 0;
+}

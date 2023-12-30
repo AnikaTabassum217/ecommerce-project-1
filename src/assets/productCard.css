@@ -1,0 +1,17 @@
+.discounted-price .discounted {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #368436;
+}
+.discounted-price .regular {
+    text-decoration: line-through;
+    padding-left: 0.5rem;
+    font-size: 0.75rem;
+    color: gray;
+    font-weight: 500;
+}
+.regular-price{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #368436;
+}

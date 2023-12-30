@@ -1,0 +1,32 @@
+.time {
+    margin-left:80rem;
+    margin-top: 2rem;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+    .time {
+        margin-left: 22rem;
+        margin-top: 0rem;
+      }
+}
+/* Extra small devices (phones, 768px and down) */
+@media only screen and (min-width: 768px) {
+    .time {
+        margin-left: 34rem;
+        margin-top: 2rem;
+      }
+}
+/* Extra small devices (phones, 1200px and down) */
+@media only screen and (min-width: 1200px) {
+    .time {
+        margin-left: 49rem;
+        margin-top: 2rem;
+      }
+}
+/* Extra small devices (phones, 1600px and down) */
+@media only screen and (min-width: 1600px) {
+    .time {
+        margin-left: 80rem;
+        margin-top: 2rem;
+      }
+}

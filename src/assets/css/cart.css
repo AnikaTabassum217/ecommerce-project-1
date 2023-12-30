@@ -1,0 +1,27 @@
+  
+ .responsive {
+    padding: 3rem;
+  }
+  
+  @media only screen and (max-width:600px) {
+    .responsive {
+      padding: 0rem;
+    }
+  }
+
+  @media only screen and (max-width:768px) {
+    .responsive {
+      padding: 2rem;
+    }
+  }
+  
+  @media only screen and (max-width:992px) {
+    .responsive {
+      padding: 4rem;
+    }
+  }
+  @media only screen and (max-width:1200px) {
+    .responsive {
+      padding: 6rem;
+    }
+  } 
