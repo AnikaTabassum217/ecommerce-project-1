@@ -123,7 +123,7 @@ console.log(userData);
                 shipping_area: defaultAddress?.area ?? area
             },
             products: cartProducts,
-            // order_note: orderNote,
+             order_note: orderNote,
             payment_method: "cod",
             shipping_cost: shippingCharge,
             vat: "0.00",

@@ -34,7 +34,7 @@ const UpdateAddress=()=>{
                setCustomerName(response?.data?.data?.name);
                   setAddress(response?.data?.data?.address)
                   setPhone(response?.data?.data?.phone);
-                  setCity(response?.data?.data.shipping_id==1? 'inside_dhaka':'outside_dhaka');
+                  setCity(response?.data?.data.shipping_id==1 ? 'inside_dhaka':'outside_dhaka');
                   setArea(response?.data?.data?.area)
                   setZip(response?.data?.data?.zip);
                   setEmail(response?.data?.data?.email);
