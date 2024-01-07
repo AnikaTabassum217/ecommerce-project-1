@@ -1,0 +1,27 @@
+.responsive-btn{  
+    margin-left: 12px;
+    padding: 0%;
+}
+
+.responsive-img{
+    margin-top: 0rem;  
+}
+
+.responsive-title{
+    margin-top: 6px ;
+}
+
+@media only screen and (max-width: 600px) {
+    .responsive-btn {
+        margin-left: 0rem;
+        margin-top: 0px;
+        padding: 0%;
+    }
+    .responsive-img{
+        margin-left: -7rem;
+        
+    }
+    .responsive-title{
+        padding-left:-2rem ;
+    }
+}

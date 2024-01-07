@@ -8,19 +8,19 @@ const DashBoardLayout=({children})=>{
  const{userData} =useContext(UserContext)
  const navigate= useNavigate();
 
+ let isLoaded = 0;
  useEffect(()=>{
     if(userData){
-
-      if(!userData?.token){
+      if(isLoaded==0 && !userData?.token){
         Toaster('You need to login first!', 'warn')
         navigate('/login', {replace:true})
       }
       else{
         axios.defaults.headers.common["Authorization"]=`Bearer ${userData?.token}`;
       }
-
+      isLoaded=1;
     }
- },[])
+ },[userData])
 
   return(
     <>
@@ -46,30 +46,7 @@ const DashBoardLayout=({children})=>{
           <div className="bg-slate-00 col-span-4">
             {children}
             </div>    
-    </div>
-   
-
-{/* <div className="bg-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4">
-
-  <div className="bg-slate-300">DashBoard</div>
-
-  <div>
-    {children}
-      <div className="bg-slate-400 grid grid-cols-1 md:grid-cols-3">
-              <div>Name</div>
-              <div>Dhaka</div>
-              <div>Make</div>
-      </div>
-
-      <div className="bg-slate-500 grid grid-cols-1 md:grid-cols-2">
-        <div>E</div>
-        <div>D</div>
-      </div>
-  </div>
-
-</div> */}
-
-      
+    </div>   
       </>
     </>
   )

@@ -48,7 +48,7 @@ const Pro=()=>{
                 console.log(error)
             })
         }
-      },[])
+      },[userData])
 
       const updateProfile=(e)=>{
             e.preventDefault();
@@ -74,7 +74,7 @@ const Pro=()=>{
                 updatedState.email=email;
                 updatedState.phone=phone;
 
-                //localStorage.setItem('user', JSON.stringify(updatedState));
+                localStorage.setItem('user', JSON.stringify(updatedState));
 
                 updateUserData(updatedState) 
                 Toaster('User Profile Update Successfully','success')
@@ -84,6 +84,7 @@ const Pro=()=>{
             })
             .catch((error)=>{
               console.log(error)
+              setErrorList(error.response.data.errors)
             })
       }
 
@@ -93,75 +94,6 @@ return(
       <DashBoardLayout> 
         This is Profile Page <br /><br />
         <form method="POST" onSubmit={(e)=>updateProfile(e)}>
-        {/* <input type="text" name="name" id="name" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/> <br />
-        {errorList && <span className=" text-red-600">{errorList?.customer_name}</span>} <br />
-        <input type="text" name="phone" id="phone" placeholder="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/> <br />
-        {errorList && <span className=" text-red-600">{errorList?.customer_contact}</span>} <br />
-        <input type="text" className='border-4 bg-slate-300' placeholder='email' value={email} onChange={(e)=>setEmail(e.target.value)}/> <br />
-        {errorList && <span className=" text-red-600">{errorList?.customer_email}</span>} <br />
-        <input type="text" className='border-4 bg-slate-300' placeholder='dob' value={dob} onChange={(e)=>setDob(e.target.value)}/> <br />
-        {errorList && <span className=" text-red-600">{errorList?.customer_dob}</span>}         
-        <div>
-      <input type="radio" value={'male'} name="default-radio" checked={gender=='male'?true:false} onChange={(e)=>setGender(e.target.value)} />
-       <label for='male'>Male</label><br /><br />
-
-       <input type="radio" value={'female'} name="default-radio" checked={gender=='female'?true:false} onChange={(e)=>setGender(e.target.value)} />
-       <label for='female'>Female</label><br /><br />
-
-       <input type="radio" value={'other'} name="default-radio" checked={gender=='other'?true:false} onChange={(e)=>setGender(e.target.value)} />
-       <label for='other'>Other</label><br /><br />
-       {errorList && <span className=" text-red-600">{errorList?.customer_gender}</span>}
-      </div>
-      <button className="bg-blue-300 rounded-lg p-2">Update</button> */}
-
-
-
-        {/* <div className=' p-12 bg-gradient-to-r from-white via-indigo-400 to-emerald-500  '>
-          
-            <h1 className="text-3xl text-white font-bold mb-4">
-               Registration Here     
-               </h1>
-   
-             <input type="text" className='border-2 bg-slate-100 w-[20rem] h-[2rem] rounded-lg pl-2' placeholder='Name'
-             value={name} onChange={(e)=>setName(e.target.value)}
-             /> <br /><br />
-   
-   {errorList && !name && <span className='text-red-600 text-lg'>{errorList?.customer_name}</span>}
-   
-           <input
-           type="text"
-           className='border-2 bg-slate-100 w-[20rem] h-[2rem] rounded-lg pl-2'     
-           value={phone}
-           placeholder="Phone Number"
-            onChange={handlePhoneNumberChange}
-           />
-           
-         {errorList && !phone && <span className=" text-red-600 text-lg">{errorList?.customer_contact}</span>}
-   
-   <input type="text" className='border-2 bg-slate-100 w-[20rem] h-[2rem] rounded-lg pl-2' placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-   
-   
-   <input type="text" className='border-2 bg-slate-100 w-[20rem] h-[2rem] rounded-lg pl-2' placeholder='Dob' value={dob} onChange={(e)=>setDob(e.target.value)}/>  
-   
-   <div className=' ' >
-         <input className='mr-1' type="radio" value={'male'} name="default-radio" checked={gender=='male'?true:false}  onChange={(e)=>setGender(e.target.value)} />
-          <label for='male' className='mr-4'>Male</label>
-   
-          <input className='mr-1' type="radio" value={'female'} name="default-radio" checked={gender=='female'?true:false}  onChange={(e)=>setGender(e.target.value)} />
-          <label for='female' className='mr-4'>Female</label>
-   
-          <input className='mr-1' type="radio" value={'other'} name="default-radio" checked={gender=='other'?true:false}  onChange={(e)=>setGender(e.target.value)} />
-          <label for='other' className='mr-4'>Other</label>
-         </div>
-         
-   <div>
-
-   </div>
-              <div className='bg-blue-200 p-2 rounded-lg w-[10rem]' >
-                <button className='text-black font-semibold hover:font-bold transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300'>Register</button>
-              </div>
-    
-          </div> */}
 
 <div className='p-4 md:p-12 bg-gradient-to-r from-white via-indigo-400 to-emerald-500'>
     <h1 className="text-3xl text-white font-bold mb-4">
@@ -250,3 +182,158 @@ return(
 }
 export default Pro;
 
+// import React, { useContext, useEffect, useState } from "react";
+// import Layout from "../../layouts/Layout";
+// import { Link, useNavigate } from "react-router-dom";
+// import DashBoardLayout from "../../layouts/DashBoardLayout";
+// import axios from "axios";
+// import { UserContext } from "../../components/UserProvider";
+// import Toaster from "../../components/common/Toaster";
+
+// const Profile = () => {
+//     const { userData, updateUserData } = useContext(UserContext);
+
+//     const [name, setName] = useState('');
+//     const [phone, setPhone] = useState('');
+//     const [email, setEmail] = useState('');
+//     const [dob, setDob] = useState('');
+//     const [gender, setGender] = useState('');
+//     let [errorList, setErrorList] = useState([]);
+
+//     const navigate = useNavigate();
+
+//     useEffect(() => {
+
+//        if(userData?.token){
+//         axios
+//         .get("get-edit-customer/" + userData?.id)
+//         .then(response => {       
+//             if (response.data.success === false) {
+//                 Toaster(response?.data?.message, 'warn')
+//             }
+//             else {              
+//                 setName(response?.data?.customer_name);
+//                 setPhone(response?.data?.customer_contact);
+//                 setEmail(response?.data?.customer_email);
+//                 setDob(response?.data?.customer_dob)
+//                 setGender(response?.data?.customer_gender)
+//             }
+
+//         }).catch(error => {
+//             console.log(error);
+//         })
+//        }
+
+//     }, [userData])
+
+//     const updateProfile = (e) => {
+//         e.preventDefault();
+
+//         var obj = {
+//             id: userData?.id,
+//             customer_name: name,
+//             customer_email: email,
+//             customer_contact: phone,
+//             customer_dob: dob,
+//             customer_gender: gender,
+//         };
+//         axios
+//             .post(`get-edit-customer/${userData?.id}`, obj)
+//             .then(function (resp) {
+//                 if (resp.data.success_message) {
+
+//                     localStorage.removeItem("user");
+
+//                     const updatedState = { ...userData };
+
+//                     updatedState.name=name;
+//                     updatedState.email=email;
+//                     updatedState.phone=phone;
+
+//                      localStorage.setItem("user", JSON.stringify(updatedState));
+
+//                     updateUserData(updatedState);
+                    
+//                     Toaster('User Profile Updated Succesfully', 'success')
+//                     navigate("/user/dashboard", { replace: true });
+//                 }
+//             })
+//             .catch((err) => {
+//                 console.log(err);
+//                 setErrorList(err.response.data.errors)
+//             });
+
+//     }
+//     return (
+//         <>
+//             <Layout>
+
+//                 <DashBoardLayout>
+
+//                     <form method="post" onSubmit={(e) => updateProfile(e)}>
+//                         <div class="relative z-0 w-full mb-6 group">
+//                             <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)}
+//                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+//                             <label for="name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+//                                 Enter your name</label>
+//                             {errorList && <span className=" text-red-600">{errorList?.customer_name}</span>}
+//                         </div>
+//                         <div class="relative z-0 w-full mb-6 group">
+//                             <input type="text" name="phone" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)}
+//                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+//                             <label for="phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+//                                 Enter your phone number</label>
+//                             {errorList && <span className=" text-red-600">{errorList?.customer_contact}</span>}
+//                         </div>
+
+//                         <div class="relative z-0 w-full mb-6 group">
+//                             <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}
+//                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+//                             <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+//                                 Enter your email address</label>
+//                             {errorList && <span className=" text-red-600">{errorList?.customer_email}</span>}
+//                         </div>
+
+//                         <div class="relative z-0 w-full mb-6 group">
+//                             <input type="date" name="dob" id="dob" value={dob} onChange={(e) => setDob(e.target.value)}
+//                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+//                             <label for="dob" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+//                                 Enter your birth date</label>
+//                             {errorList && <span className=" text-red-600">{errorList?.customer_dob}</span>}
+//                         </div>
+
+//                         <div class="relative z-0 w-full mb-6 group">
+
+//                             <label for="dob" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+//                                 Gender</label>
+
+//                             <div class="pt-2 flex items-center mb-4">
+//                                 <input id="male" type="radio" value={"male"} name="default-radio" checked={gender == 'male' ? true : false} onChange={(e) => setGender(e.target.value)} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+//                                 <label for="male" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+//                             </div>
+//                             <div class="pt-2 flex items-center mb-4">
+//                                 <input id="female" type="radio" value={"female"} name="default-radio" checked={gender == 'female'} onChange={(e) => setGender(e.target.value)} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+//                                 <label for="female" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+//                             </div>
+//                             <div class="pt-2 flex items-center mb-4">
+//                                 <input id="other" type="radio" value={"other"} name="default-radio" checked={gender == 'other'} onChange={(e) => setGender(e.target.value)} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+//                                 <label for="other" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Other</label>
+//                             </div>
+
+//                             {errorList && <span className=" text-red-600">{errorList?.customer_gender}</span>}
+//                         </div>
+
+
+//                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Profile</button>
+//                     </form>
+
+//                 </DashBoardLayout>
+
+
+
+//             </Layout>
+//         </>
+//     );
+// }
+
+// export default Profile;

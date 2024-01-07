@@ -20,6 +20,7 @@ import AddAddress from './pages/user/AddAddress';
 import UpdateAddress from './pages/user/UpdateAddress';
 import OrderList from './pages/user/OrderList';
 import OrderDetails from './pages/user/OrderDetails';
+import BlogDetails from './pages/BlogDetails';
 
 
 
@@ -32,7 +33,8 @@ function App() {
   <SettingProvider>
   <UserProvider>
    <Routes>
-        <Route exact path='/blogs' element={<Blog></Blog>}>Blog</Route>
+        <Route exact path='/blog' element={<Blog></Blog>}>Blog</Route>
+        <Route exact path='/blog/:slug' element={<BlogDetails></BlogDetails>}></Route>
         <Route exact path='/Regostration' element={<Registration></Registration>}>Registration</Route>
         <Route exact path='/' element={<Home></Home>}>Home</Route>
         <Route exact path='/cart' element={<Cart></Cart>}>Cart</Route>

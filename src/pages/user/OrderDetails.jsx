@@ -31,7 +31,7 @@ const OrderDetails = () => {
                 })
         }
 
-    }, [userData, order])
+    }, [userData,order])
 
 console.log(order)
 
@@ -109,7 +109,6 @@ console.log(order)
                </div>
 
 
-{/* {order?.order_details.map()} */}
 <p  className="ml-[2rem] font-semibold text-3xl mt-2">Products</p>
                 <div className="mx-[4rem] mt-2">
                 <thead className="text-lg text-gray-700 ">
@@ -139,9 +138,9 @@ console.log(order)
                         <tr key={index} >
                             <td className="mt-4">{index + 1}</td>
                             <td className="mt-4">{product.product_name}</td>
-                            <td className="mt-4">{product.amount}</td>
-                            <td className="ml-[2rem]">{product.product_quantity}</td>
-                            <td>{product.Total}</td>
+                            <td className="mt-4">{product.product_quantity}</td>
+                            <td className="mx-2 ">{product.product_quantity}</td>
+                            <td className="flex justify-end">{product.line_total}</td>
                         </tr>
                     )
                 })}

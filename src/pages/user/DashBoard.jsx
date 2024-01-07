@@ -53,7 +53,7 @@ return(
                     <div className="bg-blue-00 ">1
                     <img src={Graph} className="mt-[-10rem]"/>
                     </div>
-                    {/* <div className="bg-gray-200">2</div> */}
+                   
                    
                </div>
             </div>
